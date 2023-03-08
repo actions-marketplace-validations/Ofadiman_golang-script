@@ -1,0 +1,28 @@
+name: Golang script
+author: Ofadiman
+description: Run golang script.
+
+branding:
+  color: purple
+  icon: globe
+
+inputs:
+  script:
+    description: Golang script name
+    required: true
+  go_version:
+    description: Golang version
+    required: false
+    default: 1.20.2
+
+runs:
+  using: composite
+  steps:
+    - name: Setup go
+      uses: actions/setup-go@v3
+      with:
+        go-version: ${{ inputs.go_version }}
+
+    - name: Run script
+      run: go run ${{ inputs.script }}
+      shell: bash
