@@ -8,6 +8,11 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Run golang script
+        id: golang_script
         uses: Ofadiman/golang-script@v1.0.3
         with:
           script: scripts/main.go
+
+      - name: Log golang script output
+        run: |
+          echo "output was: ${{ steps.golang_script.outputs.value }}"
