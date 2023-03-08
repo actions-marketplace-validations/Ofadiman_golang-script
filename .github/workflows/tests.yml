@@ -8,6 +8,6 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Run golang script
-        uses: Ofadiman/golang-script@1.0.2
+        uses: Ofadiman/golang-script@v1.0.2
         with:
           script: scripts/main.go
