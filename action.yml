@@ -10,10 +10,6 @@ inputs:
   script:
     description: Golang script name
     required: true
-  go_version:
-    description: Golang version
-    required: false
-    default: 1.20.2
 
 runs:
   using: composite
@@ -24,7 +20,7 @@ runs:
     - name: Setup go
       uses: actions/setup-go@v3
       with:
-        go-version: ${{ inputs.go_version }}
+        go-version: stable
 
     - name: Go version
       shell: bash
@@ -33,9 +29,9 @@ runs:
     - name: Debug files
       shell: bash
       run: |
-        ls -lrt
-        ls -lrt scripts/
+        ls -lrt ${{ inputs.script }}
+        ls -lrt ${{ inputs.script }}/scripts/
 
     - name: Run script
       shell: bash
-      run: go run ${{ inputs.script }}
+      run: go run ${{ inputs.script }}/${{ inputs.script }}
