@@ -29,9 +29,9 @@ runs:
     - name: Debug files
       shell: bash
       run: |
-        ls -lrt ${{ inputs.script }}
-        ls -lrt ${{ inputs.script }}/scripts/
+        ls -lrt ${{ github.action_path }}
+        ls -lrt ${{ github.action_path }}/scripts/
 
     - name: Run script
       shell: bash
-      run: go run ${{ inputs.script }}/${{ inputs.script }}
+      run: go run ${{ github.action_path }}/${{ inputs.script }}
