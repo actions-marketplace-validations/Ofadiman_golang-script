@@ -18,11 +18,24 @@ inputs:
 runs:
   using: composite
   steps:
+    - name: Checkout code
+      uses: actions/checkout@v3.3.0
+
     - name: Setup go
       uses: actions/setup-go@v3
       with:
         go-version: ${{ inputs.go_version }}
 
-    - name: Run script
-      run: go run ${{ inputs.script }}
+    - name: Go version
       shell: bash
+      run: go version
+
+    - name: Debug files
+      shell: bash
+      run: |
+        ls -lrt
+        ls -lrt scripts/
+
+    - name: Run script
+      shell: bash
+      run: go run ${{ inputs.script }}

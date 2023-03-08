@@ -1,0 +1,15 @@
+name: Golang script tests
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  tests:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Run golang script
+        uses: Ofadiman/golang-script@1.0.0
+        with:
+          script: ./scripts/main.go
