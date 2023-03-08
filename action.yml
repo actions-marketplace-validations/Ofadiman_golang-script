@@ -22,16 +22,6 @@ runs:
       with:
         go-version: stable
 
-    - name: Go version
-      shell: bash
-      run: go version
-
-    - name: Debug files
-      shell: bash
-      run: |
-        ls -lrt ${{ github.action_path }}
-        ls -lrt ${{ github.action_path }}/scripts/
-
     - name: Run script
       shell: bash
       run: go run ${{ github.action_path }}/${{ inputs.script }}
